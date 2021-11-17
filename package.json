@@ -1,0 +1,28 @@
+{
+  "name": "linux-server-swag-demo",
+  "version": "1.0.0",
+  "description": "Linux server SWAG image usage demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src/index",
+    "build": "tsc"
+  },
+  "keywords": [
+    "nodejs",
+    "linuxserver.io",
+    "docker",
+    "nginx"
+  ],
+  "author": "Neil Monzales",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/typescript": "^2.0.0"
+  }
+}

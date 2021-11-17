@@ -1,0 +1,3 @@
+FROM ghcr.io/linuxserver/swag
+
+COPY ./default.conf /config/nginx/site-confs/default

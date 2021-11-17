@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  api:
+    container_name: demo_api
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    hostname: demo_api
+    ports:
+      - '3000:3000'
+    restart: always
+    networks:
+      - local-network
+    volumes:
+      - ./:/app
+      - exclude:/app/node_modules/
+
+  swag:
+    build:
+      dockerfile: ./Dockerfile.swag
+      context: .
+    container_name: swag
+    cap_add:
+      - NET_ADMIN
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Singapore
+      URL: '${YOUR_DOMAIN}'
+      VALIDATION: http
+      DEFAULT_CONF: '${DEFAULT_CONF}'
+    volumes:
+      - swag:/config
+    ports:
+      - 443:443
+      - 80:80 #optional
+    restart: unless-stopped
+    networks:
+      - local-network
+
+volumes:
+  exclude:
+    name: exclude
+  swag:
+    name: swag
+networks:
+  local-network:
+    name: local-network
